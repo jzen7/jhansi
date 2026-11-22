@@ -94,7 +94,7 @@ function confetti(){
     if(Date.now()<end)requestAnimationFrame(f);else x.clearRect(0,0,c.width,c.height);
   })();
 }
-const VIDS=['ACnSAKEF4q4','adr0W2sp0B4'];
+const VIDS=['ACnSAKEF4q4','NUUNvCNJt3E'];
 let cur=0,yt=null,muted=false,failed=false;
 const snd=document.getElementById('snd');
 window.onYouTubeIframeAPIReady=function(){try{yt=new YT.Player('yt',{videoId:VIDS[0],width:'220',height:'220',playerVars:{playsinline:1,controls:0,rel:0},events:{onError:function(){failed=true;needPlay();},onStateChange:function(e){if(e.data===0)nextSong();}}});}catch(e){failed=true;}};
