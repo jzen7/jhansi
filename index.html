@@ -67,9 +67,9 @@ function show(){
   document.documentElement.style.background=s.bg;
   document.body.style.background=s.bg;document.body.style.color=s.fg;
   card.style.setProperty('--bg',s.bg);
-  card.innerHTML=(s.final?'<img class="pic pop" alt="Jhanusha in her graduation gown" src="'+PIC+'"><div class="np pop"><span id="np"></span><button id="nxt" class="ghost">\u23ED Next song</button></div>':'')+'<h1 class="pop'+(s.final?' sm':'')+(s.huge?' huge':'')+'"></h1>'+(s.small?'<p class="pop"></p>':'')+(s.songs?'<ol class="songs pop">'+s.songs.map(x=>'<li><b>'+x[0]+'</b><span>'+x[1]+'</span></li>').join('')+'</ol>':'')+(s.note?'<p class="pop note"></p>':'')+(s.load?'<div class="bar"><i></i></div>':'')+(s.btn?'<button class="pop"><span></span></button>':'');
+  card.innerHTML=(s.final?'<img class="pic pop" alt="Jhanusha in her graduation gown" src="'+PIC+'">':'')+'<h1 class="pop'+(s.final?' sm':'')+(s.huge?' huge':'')+'"></h1>'+(s.small?'<p class="pop"></p>':'')+(s.songs?'<ol class="songs pop">'+s.songs.map(x=>'<li><b>'+x[0]+'</b><span>'+x[1]+'</span></li>').join('')+'</ol>':'')+(s.note?'<p class="pop note"></p>':'')+(s.load?'<div class="bar"><i></i></div>':'')+(s.btn?'<button class="pop"><span></span></button>':'');
   card.querySelector('h1').textContent=s.big;
-  if(s.small)card.querySelector('p').textContent=s.small;if(s.note)card.querySelector('p.note').textContent=s.note;if(s.final){document.getElementById('nxt').onclick=nextSong;npLabel();}
+  if(s.small)card.querySelector('p').textContent=s.small;if(s.note)card.querySelector('p.note').textContent=s.note;
   if(s.count){
     const h=card.querySelector('h1'),rest=card.querySelectorAll('p,button');
     rest.forEach(e=>e.style.visibility='hidden');
@@ -94,7 +94,7 @@ function confetti(){
     if(Date.now()<end)requestAnimationFrame(f);else x.clearRect(0,0,c.width,c.height);
   })();
 }
-const VIDS=['ACnSAKEF4q4','NUUNvCNJt3E'];
+const VIDS=['ACnSAKEF4q4'];
 let cur=0,yt=null,muted=false,failed=false;
 const snd=document.getElementById('snd');
 window.onYouTubeIframeAPIReady=function(){try{yt=new YT.Player('yt',{videoId:VIDS[0],width:'220',height:'220',playerVars:{playsinline:1,controls:0,rel:0},events:{onError:function(){failed=true;needPlay();},onStateChange:function(e){if(e.data===0)nextSong();}}});}catch(e){failed=true;}};
